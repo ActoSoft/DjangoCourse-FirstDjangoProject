@@ -9,7 +9,18 @@ from .models import Movie
 
 def GetMovies(request):
     # Vamos a traer todos las películas
-    #"SELECT * FROM movies_movie WHERE jsdlkdfjsdklsfjsklfsjkld" -> Aquí no hacemos esto.
-    movies = Movie.objects.all() #SELECT * FROM movies_movie #queryset
-    print(movies)
-    return HttpResponse('Funciona!')
+    movies = Movie.objects.all() # SELECT * FROM movies_movie #queryset
+    template_name = 'movies/list.html'
+    context = {
+        'movies': movies
+    }
+    return render(request, template_name, context)
+
+
+def GetMovie(request, id):
+    movie = Movie.objects.get(pk=id)
+    template_name = 'movies/detail.html'
+    context = {
+        'movie': movie
+    }
+    return render(request, template_name, context)
