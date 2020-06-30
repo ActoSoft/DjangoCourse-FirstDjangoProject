@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Película</title>
+</head>
+<body>
+    <form action="/movies/create/" method="POST">
+        {% csrf_token %}
+        <label for="title">Ingresa tu título</label>
+        <input type="text" name="title" id="title" placeholder="Titulo">
+        <label for="sinopsis">Ingresa la sinopsis</label>
+        <textarea name="sinopsis" id="sinopsis" cols="30" rows="10"></textarea>
+        <label for="duration">Ingresa la duración en minutos</label>
+        <input type="number" name="duration" id="duration" placeholder="100 min.">
+        <label for="calif">Ingresa la calificación (1 al 5)</label>
+        <input type="number" name="calif" id="calif" placeholder="5">
+        <label for="gender">Ingresa el género de la película</label>
+        <input type="text" name="gender" id="gender" placeholder="Acción">
+        <input type="submit" value="Crear película">
+    </form>
+</body>
+</html>
