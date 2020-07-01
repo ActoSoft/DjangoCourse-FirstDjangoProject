@@ -6,10 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/movies/create/" method="POST">
+    <form action="
+        {% if id %}
+            /movies/update/{{id}}/
+        {%else%}
+            /movies/create/
+        {% endif %}
+    " method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Crear película">
+        <input type="submit" value="
+            {% if id %}
+                Actualizar
+            {% else %}
+                Crear película
+            {% endif %}
+        ">
     </form>
 </body>
 </html>
