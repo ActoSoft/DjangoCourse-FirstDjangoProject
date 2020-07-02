@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>Lista de películas disponibles</h1>
     <ul>
         {% for movie in movies %}
-            <a href="/movies/{{ movie.id }}"><li>{{ movie.title }}</li></a>
+            <a href="{% url 'movies:detail' movie.id %}"><li>{{ movie.title }}</li></a>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock content %}

@@ -6,6 +6,7 @@ class Movie(models.Model): # Siempre hay que heredar de models.Model
     duration = models.PositiveIntegerField()
     calif = models.PositiveIntegerField(default=5)
     gender = models.CharField(max_length=50)
+    is_on_cinema = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

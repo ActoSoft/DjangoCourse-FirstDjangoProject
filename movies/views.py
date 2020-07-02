@@ -61,7 +61,7 @@ class CreateMovieEasy(views.View):
         if new_form.is_valid():
             new_movie = new_form.save()
             print('Se creó la película corerctamente', new_movie)
-            return redirect('/movies/')
+            return redirect('movies:list')
         else:
             template_name = 'movies/form_easy.html'
             context = {
@@ -85,7 +85,7 @@ class UpdateMovie(views.View):
         update_form = MovieForm(request.POST, instance=movie)
         if update_form.is_valid():
             form_updated = update_form.save()
-            return redirect(f'/movies/{id}')
+            return redirect('movies:detail', id)
         else:
             template_name = 'movies/form_easy.html'
             context = {
@@ -97,4 +97,4 @@ class UpdateMovie(views.View):
 def DeleteMovie(request, id):
     movie = Movie.objects.get(pk=id)
     movie.delete()
-    return redirect('/movies/')
+    return redirect('movies:list')

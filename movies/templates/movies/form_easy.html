@@ -8,9 +8,9 @@
 <body>
     <form action="
         {% if id %}
-            /movies/update/{{id}}/
+            {% url 'movies:update' id %}
         {%else%}
-            /movies/create/
+            {% url 'movies:create' %}
         {% endif %}
     " method="POST">
         {% csrf_token %}

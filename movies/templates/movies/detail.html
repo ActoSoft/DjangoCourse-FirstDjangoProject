@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>Detalle de la película # {{ movie.id }}</h1>
     <h3>Título: {{ movie.title }}</h3>
     <p>Sinopsis: </p>
     <p>{{ movie.sinopsis }}</p>
     <p>Duracion: {{ movie.duration }}</p>
-    <a href="/movies/update/{{movie.id}}"><button>Editar película</button></a>
-    <a href="/movies/delete/{{movie.id}}"><button>Eliminar película</button></a>
-</body>
-</html>
+    <a href="{% url 'movies:update' movie.id %}"><button>Editar película</button></a>
+    <a href="{% url 'movies:delete' movie.id %}"><button>Eliminar película</button></a>
+{% endblock content %}
