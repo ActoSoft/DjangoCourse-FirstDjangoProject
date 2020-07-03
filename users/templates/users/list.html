@@ -3,6 +3,6 @@
 {% block content %}
     <h1>Lista de usuarios</h1>
     {% for user in users %}
-        <p>{{ user.first_name }} {{ user.last_name }}</p>
+        <a href="{% url 'users:detail' user.id %}"><p>{{ user.first_name }} {{ user.last_name }}</p></a>
     {% endfor %}
 {% endblock content %}
