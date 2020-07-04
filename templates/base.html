@@ -10,9 +10,11 @@
         <a href="{% url 'movies:list' %}"><li>Ver películas</li></a>
         <a href="{% url 'movies:create' %}"><li>Crear película</li></a>
         <a href="{% url 'users:list' %}"><li>Lista de usuarios</li></a>
+        <a href="{% url 'users:create' %}"><li>Crear usuario</li></a>
     </ul>
 
     {% block content %}
     {% endblock content %}
+    <footer>Actosoft 2020</footer>
 </body>
 </html>
