@@ -10,4 +10,6 @@
     <p>Género: <b>{{ user.profile.gender }}</b></p>
     <p>Edad: <b>{{ user.profile.age }}</b></p>
     <p>Teléfono: <b>{{ user.profile.phone }}</b></p>
+    <a href="{% url 'users:update' user.id %}"><button>Editar usuario</button></a>
+    <a href="{% url 'users:delete' user.id %}"><button>Eliminar usuario</button></a>
 {% endblock content %}

@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Crea un nuevo usuario</h1>
-    <form action="{% url 'users:create' %}" method="POST"
-        enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
-        <input type="submit" value="Crear usuario">
-    </form>
+    {% if id %}
+        <h1>Editar usuario</h1>
+        <form action="{% url 'users:update' id %}" method="POST"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <img src="{{ image.url }}" alt="Imagen"
+            width="100" heigth="100">
+            <input type="submit" value="Guardar cambios">
+    {% else %}
+        <h1>Crea un nuevo usuario</h1>
+        <form action="{% url 'users:create' %}" method="POST"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <input type="submit" value="Crear usuario">
+        </form>
+    {% endif %}
 {% endblock content %}
