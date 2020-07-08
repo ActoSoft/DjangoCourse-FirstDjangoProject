@@ -8,8 +8,13 @@
             {% csrf_token %}
             {{ user_form.as_p }}
             {{ profile_form.as_p }}
-            <img src="{{ image.url }}" alt="Imagen"
-            width="100" heigth="100">
+            {% if image %}
+                <img src="{{ image.url }}" alt="Imagen"
+                width="100" heigth="100">
+            {% else %}
+                <img src="https://cdnlrv.lavoz.com.ar/img/user/default.jpg"
+                alt="Imagen default" width="50" height="50">
+            {% endif %}
             <input type="submit" value="Guardar cambios">
     {% else %}
         <h1>Crea un nuevo usuario</h1>

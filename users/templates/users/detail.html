@@ -2,14 +2,23 @@
 
 {% block content %}
     <h1>Usuario: {{ user.first_name }} {{ user.last_name }}</h1>
-    <img
+    {% if user.profile.image %}
+        <img
         src="{{ user.profile.image.url }}"
         alt="Imagen del usuario" width="50" height="50">
+    {% else %}
+        <img src="https://cdnlrv.lavoz.com.ar/img/user/default.jpg"
+        alt="Imagen default" width="50" height="50">
+    {% endif %}
     <p>Email: <b>{{ user.email }}</b></p>
     <p>Nombre de usuario: <b>{{ user.username }}</b></p>
     <p>Género: <b>{{ user.profile.gender }}</b></p>
     <p>Edad: <b>{{ user.profile.age }}</b></p>
     <p>Teléfono: <b>{{ user.profile.phone }}</b></p>
+    <h2>Direcciones del usuario</h2>
+    {% for address in user.addresses.all %}
+        <p>{{ address.street}}, {{ address.city }} - {{address.postal_code}}</p>
+    {% endfor %}
     <a href="{% url 'users:update' user.id %}"><button>Editar usuario</button></a>
     <a href="{% url 'users:delete' user.id %}"><button>Eliminar usuario</button></a>
 {% endblock content %}
