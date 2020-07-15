@@ -17,4 +17,11 @@
     <p>Estado: <b>{{ address.state }}</b></p>
     <p>País: <b>{{ address.coutry }}</b></p>
     <p>Código Postal: <b>{{ address.postal_code }}</b></p>
+
+    <a href="{% url 'addresses:update' address.id %}">
+        <button>Editar dirección</button>
+    </a>
+    <a href="{% url 'addresses:delete' address.id %}">
+        <button>Eliminar dirección</button>
+    </a>
 {% endblock content %}

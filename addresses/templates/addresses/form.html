@@ -1,9 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form action="{% url 'addresses:create' %}" method="POST">
+    <form action="
+        {% if address %}
+            {% url 'addresses:update' address.id %}
+        {% else %}
+            {% url 'addresses:create' %}
+        {% endif %}
+    " method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Crear dirección">
+        <input type="submit" value="
+            {% if address %}
+                Guardar cambios
+            {% else %}
+                Crear dirección
+            {% endif %}
+        ">
     </form>
 {% endblock content %}
