@@ -25,6 +25,14 @@
     {% else %}
         <h3>Ups! Aún no cuentas con direcciones registradas</h3>
     {% endif %}
+    <h2>Grupos a los que pertenece</h2>
+    {% if user.groupss.all|length > 0 %}
+        {% for group in user.groupss.all %}
+                <p>{{ group.name }}</p>
+        {% endfor %}
+    {% else %}
+        <h3>Ups! Aún no te inscribes a algún grupo</h3>
+    {% endif %}
     <a href="{% url 'users:update' user.id %}"><button>Editar usuario</button></a>
     <a href="{% url 'users:delete' user.id %}"><button>Eliminar usuario</button></a>
 {% endblock content %}

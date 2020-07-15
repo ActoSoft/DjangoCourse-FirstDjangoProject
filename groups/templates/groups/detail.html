@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ group.name }}</h1>
+    <p>Descripción: {{ group.description }}</p>
+    <h3>Usuario inscritos</h3>
+    {% if group.users.all|length > 0 %}
+        {% for user in group.users.all %}
+            <a href="{% url 'users:detail' user.id %}">
+                <p>{{ user.get_full_name }}</p>
+            </a>
+        {% endfor %}
+    {% else %}
+        <p>No hay usuarios registrados en este grupo</p>
+    {% endif %}
+{% endblock content %}

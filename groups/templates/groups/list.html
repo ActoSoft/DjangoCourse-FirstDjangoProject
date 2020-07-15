@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Lista de Grupos</h1>
+    {% if groups|length > 0 %}
+        {% for group in groups %}
+            <a href="{% url 'groups:detail' group.id %}">
+                <p>{{ group.name }}</p>
+            </a>
+        {% endfor %}
+    {% else %}
+        <h3>Aún no hay grupos creados :(</h3>
+    {% endif %}
+{% endblock content %}
