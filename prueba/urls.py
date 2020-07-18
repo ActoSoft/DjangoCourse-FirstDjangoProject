@@ -21,7 +21,7 @@ from movies import urls as movies_urls
 from users import urls as users_urls
 from addresses import urls as address_urls
 from groups import urls as groups_urls
-from users.views import Login
+from users.views import Login, Logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +29,6 @@ urlpatterns = [
     path('users/', include(users_urls, namespace='users')),
     path('addresses/', include(address_urls, namespace='addresses')),
     path('groups/', include(groups_urls, namespace='groups')),
-    path('login/', Login.as_view(), name='login')
+    path('login/', Login.as_view(), name='login'),
+    path('logout/', Logout, name='user_logout')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,20 @@
+.header-list {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+}
+
+.header-list a {
+    color: green;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.header-list a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+.header-list a li {
+    list-style: none;
+}

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django import views
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login # Importar este
+from django.contrib.auth import authenticate, login, logout # Importar este
 from django.contrib.auth.forms import AuthenticationForm # Importar este
 from .forms import UserCreateForm, UserUpdateForm, ProfileForm
 
@@ -47,6 +47,10 @@ class Login(views.View):
             messages.error(request, 'Credenciales inválidas')
             return render(request, template_name, context)
 
+def Logout(request):
+    logout(request)
+    messages.info(request, 'Sesión cerrada con éxito')
+    return redirect('login')
 
 def GetUsers(request):
     users = User.objects.filter(is_superuser=False)
