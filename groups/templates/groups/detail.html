@@ -4,7 +4,7 @@
     <h1>{{ group.name }}</h1>
     <p>Descripción: {{ group.description }}</p>
     <h3>Usuario inscritos</h3>
-    {% if group.users.all|length > 0 %}
+    {% if group.users.all %}
         {% for user in group.users.all %}
             <a href="{% url 'users:detail' user.id %}">
                 <p>{{ user.get_full_name }}</p>

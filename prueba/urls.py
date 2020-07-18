@@ -21,11 +21,13 @@ from movies import urls as movies_urls
 from users import urls as users_urls
 from addresses import urls as address_urls
 from groups import urls as groups_urls
+from users.views import Login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('movies/', include(movies_urls, namespace='movies')),
     path('users/', include(users_urls, namespace='users')),
     path('addresses/', include(address_urls, namespace='addresses')),
-    path('groups/', include(groups_urls, namespace='groups'))
+    path('groups/', include(groups_urls, namespace='groups')),
+    path('login/', Login.as_view(), name='login')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

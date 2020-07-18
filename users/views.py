@@ -2,7 +2,51 @@ from django.shortcuts import render, redirect
 from django import views
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate, login # Importar este
+from django.contrib.auth.forms import AuthenticationForm # Importar este
 from .forms import UserCreateForm, UserUpdateForm, ProfileForm
+
+class Login(views.View):
+    def get(self, request):
+        auth_form = AuthenticationForm()
+        template_name = 'users/login.html'
+        context = {
+            'form': auth_form
+        }
+        return render(request, template_name, context)
+    def post(self, request):
+        try:
+            auth_form = AuthenticationForm(data=request.POST)
+            if auth_form.is_valid():
+                username = auth_form.cleaned_data['username']
+                password = auth_form.cleaned_data['password']
+                user = authenticate(username=username, password=password)
+                if user is not None:
+                    login(request, user)
+                    messages.success(request, 'Inciaste sesión éxito')
+                    return redirect('users:detail', user.id)
+                else:
+                    template_name = 'users/login.html'
+                    context = {
+                        'form': auth_form
+                    }
+                    messages.error(request, 'Credenciales inválidas')
+                    return render(request, template_name, context)
+            else:
+                template_name = 'users/login.html'
+                context = {
+                    'form': auth_form
+                }
+                messages.error(request, 'Credenciales inválidas')
+                return render(request, template_name, context)
+        except Exception as e:
+            template_name = 'users/login.html'
+            context = {
+                'form': auth_form
+            }
+            messages.error(request, 'Credenciales inválidas')
+            return render(request, template_name, context)
+
 
 def GetUsers(request):
     users = User.objects.filter(is_superuser=False)

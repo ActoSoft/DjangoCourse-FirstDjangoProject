@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class GroupModel(models.Model):
-    users = models.ManyToManyField(User, related_name='groupss')
+    users = models.ManyToManyField(User, related_name='groupss', blank=True, null=True)
     name = models.CharField(max_length=140)
     description = models.TextField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
