@@ -18,3 +18,7 @@
 .header-list a li {
     list-style: none;
 }
+
+.input-half-size {
+    width: 500px !important;
+}

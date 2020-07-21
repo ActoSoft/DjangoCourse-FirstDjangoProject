@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies Django App</title>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
@@ -29,15 +31,21 @@
     {% if messages %}
         {% for message in messages %}
             {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                <p style="color:red">{{ message }}</p>
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
             {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
                 <p style="color:yellow">{{ message }}</p>
             {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
                 <p style="color:green">{{ message }}</p>
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
             {% endif %}
         {% endfor %}
     {% endif %}
 
     <footer>Actosoft 2020</footer>
+     {% bootstrap_javascript jquery='full' %}
 </body>
 </html>

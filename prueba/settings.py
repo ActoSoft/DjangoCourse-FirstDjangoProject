@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'movies',
     'users',
     'addresses',
-    'groups'
+    'groups',
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
